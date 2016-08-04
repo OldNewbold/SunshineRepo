@@ -34,10 +34,9 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
-/**
- * A placeholder fragment containing a simple view.
- */
 public class ForecastFragment extends Fragment {
+
+    private ArrayAdapter<String> mForecastAdapter;
 
     public ForecastFragment() {
     }
@@ -71,7 +70,7 @@ public class ForecastFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        String[] forecastarray = {
+        String[] data = {
                 "Monday - Sunny - 14/24",
                 "Tuesday - Cloudy - 10/19",
                 "Wednesday - Solar Flares - -45/134",
@@ -81,12 +80,10 @@ public class ForecastFragment extends Fragment {
                 "Sunday - Excellent weather for Zombies"
         };
 
-        List<String> weekForecast;  //Create new list class with strings inside called weekforecast
-        weekForecast = new ArrayList<String>(   //Create an ArrayList object
-                Arrays.asList(forecastarray));  //Present forecastarray asList using the Arrays.asList function
+        List<String> weekForecast = new ArrayList<String>(Arrays.asList(data));
 
         // Get a reference to the ListView, and attach this adapter to it.
-        ArrayAdapter<String> mForecastAdapter =
+         mForecastAdapter =
                 new ArrayAdapter<String>(
                         //The current context (This fragments parent activity)
                         getActivity(),
@@ -112,8 +109,8 @@ public class ForecastFragment extends Fragment {
         private final String LOG_TAG = FetchWeatherTask.class.getSimpleName();
 
         /* The date/time conversion code is going to be moved outside the asynctask later,
- * so for convenience we're breaking it out into its own method now.
- */
+        * so for convenience we're breaking it out into its own method now.*/
+
         @TargetApi(Build.VERSION_CODES.N)
         private String getReadableDateString(long time){
             // Because the API returns a unix timestamp (measured in seconds),
@@ -183,38 +180,35 @@ public class ForecastFragment extends Fragment {
 
                 // Get the JSON object representing the day
                 JSONObject dayForecast = weatherArray.getJSONObject(i);
-                Log.v(LOG_TAG, "This is list(i): " + dayForecast);
                 JSONObject dayMain = dayForecast.getJSONObject(OWM_DESCRIPTION);
-                Log.v(LOG_TAG, "This is main: " + dayMain);
-
-
                 // description is in a child array called "weather", which is 1 element long.
                 JSONObject weatherObject = dayForecast.getJSONArray(OWM_WEATHER).getJSONObject(0);
                 description = weatherObject.getString(OWM_DESCRIPTION);
 
                 // Temperatures are in a child object called "temp".  Try not to name variables
                 // "temp" when working with temperature.  It confuses everybody.
-                double temperatureObject = dayMain.getDouble(OWM_TEMPERATURE);
+               // double temperatureObject = dayMain.getDouble(OWM_TEMPERATURE);
                 double high = dayMain.getDouble(OWM_MAX);
                 double low = dayMain.getDouble(OWM_MIN);
-                Log.v(LOG_TAG, "temps: " + temperatureObject + " - " + high + " - " + low);
 
                 highAndLow = formatHighLows(high, low);
                 resultStrs[i] = day + " - " + description + " - " + highAndLow;
             }
-
             for (String s : resultStrs) {
                 Log.v(LOG_TAG, "Forecast entry: " + s);
             }
             return resultStrs;
-
         }
-
 
         @Override
         protected String[] doInBackground(String... params){
             // These two need to be declared outside the try/catch
             // so that they can be closed in the finally block.
+
+            if (params.length == 0){
+                return null;
+            }
+
             HttpURLConnection urlConnection = null;
             BufferedReader reader = null;
 
@@ -227,8 +221,6 @@ public class ForecastFragment extends Fragment {
             String units = "metric";
             int numDays = 7;
             String appid = "dde27f8876ae58fb1c7259bb360ee180";
-
-
 
             try {
                 // Construct the URL for the OpenWeatherMap query
@@ -252,8 +244,6 @@ public class ForecastFragment extends Fragment {
                         .build();
 
                 URL url = new URL(OpenWeatherURL.toString());
-
-                Log.v(LOG_TAG, "OpenWeatherURL" + OpenWeatherURL.toString());   //Log to check the built URL
 
                 // Create the request to OpenWeatherMap, and open the connection
                 urlConnection = (HttpURLConnection) url.openConnection();
@@ -290,6 +280,7 @@ public class ForecastFragment extends Fragment {
                 // If the code didn't successfully get the weather data, there's no point in attemping
                 // to parse it.
                 return null;
+
             } finally {
                 if (urlConnection != null) {
                     urlConnection.disconnect();
@@ -311,6 +302,17 @@ public class ForecastFragment extends Fragment {
             }
 
             return null;
+        }
+
+        @Override
+        protected void onPostExecute(String[] result) {
+            if (result != null) {
+                Log.v(LOG_TAG, "This is the result" + result);
+                mForecastAdapter.clear();
+                for (String dayForecastStr : result) {
+                    mForecastAdapter.add(dayForecastStr);
+                }
+            }
         }
     }
 }

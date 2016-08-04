@@ -1,3 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<items version="2" />
+<items version="2" >
 
+    <item
+        jar="C:\Users\Wee Wilfred\Documents\AndroidProjects\Sunshine\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        revision="24.0.0"
+        sha1="e0962c5ab3b83a0e6b90cb4d5ad1bc3ee11d1f3f">
+        <dex dex="C:\Users\Wee Wilfred\Documents\AndroidProjects\Sunshine\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_53f79a28db2708aee78e932ca2a9260a273c0af2\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Wee Wilfred\Documents\AndroidProjects\Sunshine\app\build\intermediates\exploded-aar\com.android.support\support-v4\24.0.0\jars\classes.jar"
+        jumboMode="true"
+        revision="24.0.0"
+        sha1="2f7e6e2dad1bccaf68a8820820adc6c0d5b96d37">
+        <dex dex="C:\Users\Wee Wilfred\Documents\AndroidProjects\Sunshine\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-v4-24.0.0_2bff0a746f133d043924b5be26d68a66b6140ca9\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Wee Wilfred\.gradle\caches\modules-2\files-2.1\com.android.support\support-annotations\24.0.0\2943c74db6d4346ab8c6531adac91fa05c137c40\support-annotations-24.0.0.jar"
+        jumboMode="true"
+        revision="24.0.0"
+        sha1="2943c74db6d4346ab8c6531adac91fa05c137c40">
+        <dex dex="C:\Users\Wee Wilfred\Documents\AndroidProjects\Sunshine\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-24.0.0_6cee0de4aeb457631ea1479fd93151d69b25821c\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Wee Wilfred\Documents\AndroidProjects\Sunshine\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\24.0.0\jars\classes.jar"
+        jumboMode="true"
+        revision="24.0.0"
+        sha1="0874286cc2fd88d54fdf130e9d5372730da6de97">
+        <dex dex="C:\Users\Wee Wilfred\Documents\AndroidProjects\Sunshine\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-appcompat-v7-24.0.0_cc217895e0367a0f95852091cab030c2cba379a3\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Wee Wilfred\Documents\AndroidProjects\Sunshine\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        revision="24.0.0"
+        sha1="3fc09f7c38e8feb783c63cd89fdc392aa4712912">
+        <dex dex="C:\Users\Wee Wilfred\Documents\AndroidProjects\Sunshine\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_2d1d9ffa37c627507662403d9da724834bcc21bc\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Wee Wilfred\Documents\AndroidProjects\Sunshine\app\build\intermediates\exploded-aar\com.android.support\support-v4\24.0.0\jars\libs\internal_impl-24.0.0.jar"
+        jumboMode="true"
+        revision="24.0.0"
+        sha1="fcaf463e10e69c1923ccf1edeba3b4196d239e00">
+        <dex dex="C:\Users\Wee Wilfred\Documents\AndroidProjects\Sunshine\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.0.0_3d00faa6b49c388753375bd2d780019dfc9395d9\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Wee Wilfred\Documents\AndroidProjects\Sunshine\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\24.0.0\jars\classes.jar"
+        jumboMode="true"
+        revision="24.0.0"
+        sha1="e70f608219ed6b974644c333249ab2bb7b71de98">
+        <dex dex="C:\Users\Wee Wilfred\Documents\AndroidProjects\Sunshine\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-animated-vector-drawable-24.0.0_364b021c0f20c502d2596c8b4d08a2d45340d0ff\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Wee Wilfred\Documents\AndroidProjects\Sunshine\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\24.0.0\jars\classes.jar"
+        jumboMode="true"
+        revision="24.0.0"
+        sha1="3bd97cfefd783e9de1dd1c30574a6adb44b4409b">
+        <dex dex="C:\Users\Wee Wilfred\Documents\AndroidProjects\Sunshine\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-vector-drawable-24.0.0_c56d23ecc332c9334559bed3bee23b758fc4de56\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Wee Wilfred\Documents\AndroidProjects\Sunshine\app\build\intermediates\exploded-aar\com.android.support\design\24.0.0\jars\classes.jar"
+        jumboMode="true"
+        revision="24.0.0"
+        sha1="fc29308a7a8f6d4407b34634eb48fb8b817f9b23">
+        <dex dex="C:\Users\Wee Wilfred\Documents\AndroidProjects\Sunshine\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-design-24.0.0_39c9d06e680fd0f92845174f8f5b8a3bd54e6dce\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Wee Wilfred\Documents\AndroidProjects\Sunshine\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\24.0.0\jars\classes.jar"
+        jumboMode="true"
+        revision="24.0.0"
+        sha1="894922f67adeaaef51f077a29e315da21a3382d3">
+        <dex dex="C:\Users\Wee Wilfred\Documents\AndroidProjects\Sunshine\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-recyclerview-v7-24.0.0_0ea4bd8bb2f413387222f8773081544f82e7a173\classes.dex" />
+    </item>
+
+</items>
