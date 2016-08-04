@@ -4,22 +4,94 @@
     api-level="23"
     density="xxxhdpi"
     format="7"
-    timestamp="5131454340522"
-    token="-2790441112097719481" >
+    timestamp="273422392506489"
+    token="-2790441112097719481"
+    verifier="COMPATIBLE" >
 
     <task
         name="javac"
-        duration="0" />
+        duration="529" />
     <task
         name="instant-run-dex"
-        duration="0" />
+        duration="84" />
     <task
         name="instant-run-transform"
-        duration="0" />
+        duration="49" />
     <task
         name="verifier"
-        duration="0" />
+        duration="10" />
 
-    <build timestamp="5131454340522" />
+    <artifact
+        location="C:\Users\Wee Wilfred\Documents\AndroidProjects\Sunshine\app\build\intermediates\reload-dex\debug\classes.dex"
+        type="RELOAD_DEX" />
+
+    <build timestamp="270876628204066" >
+        <artifact
+            location="C:\Users\Wee Wilfred\Documents\AndroidProjects\Sunshine\app\build\outputs\apk\app-debug.apk"
+            type="MAIN" />
+    </build>
+    <build
+        timestamp="271056703652333"
+        verifier="COMPATIBLE" >
+        <artifact
+            location="C:\Users\Wee Wilfred\Documents\AndroidProjects\Sunshine\app\build\intermediates\builds\debug\271056703652333\classes.dex"
+            type="RELOAD_DEX" />
+    </build>
+    <build
+        timestamp="271286948177792"
+        verifier="COMPATIBLE" >
+        <artifact
+            location="C:\Users\Wee Wilfred\Documents\AndroidProjects\Sunshine\app\build\intermediates\builds\debug\271286948177792\classes.dex"
+            type="RELOAD_DEX" />
+    </build>
+    <build
+        timestamp="271300214144699"
+        verifier="COMPATIBLE" >
+        <artifact
+            location="C:\Users\Wee Wilfred\Documents\AndroidProjects\Sunshine\app\build\intermediates\builds\debug\271300214144699\classes.dex"
+            type="RELOAD_DEX" />
+    </build>
+    <build
+        timestamp="271398513755354"
+        verifier="COMPATIBLE" >
+        <artifact
+            location="C:\Users\Wee Wilfred\Documents\AndroidProjects\Sunshine\app\build\intermediates\builds\debug\271398513755354\classes.dex"
+            type="RELOAD_DEX" />
+    </build>
+    <build
+        timestamp="272429846373435"
+        verifier="COMPATIBLE" >
+        <artifact
+            location="C:\Users\Wee Wilfred\Documents\AndroidProjects\Sunshine\app\build\intermediates\builds\debug\272429846373435\classes.dex"
+            type="RELOAD_DEX" />
+    </build>
+    <build
+        timestamp="272777035667812"
+        verifier="COMPATIBLE" >
+        <artifact
+            location="C:\Users\Wee Wilfred\Documents\AndroidProjects\Sunshine\app\build\intermediates\builds\debug\272777035667812\classes.dex"
+            type="RELOAD_DEX" />
+    </build>
+    <build
+        timestamp="273148726415543"
+        verifier="COMPATIBLE" >
+        <artifact
+            location="C:\Users\Wee Wilfred\Documents\AndroidProjects\Sunshine\app\build\intermediates\builds\debug\273148726415543\classes.dex"
+            type="RELOAD_DEX" />
+    </build>
+    <build
+        timestamp="273214596327800"
+        verifier="COMPATIBLE" >
+        <artifact
+            location="C:\Users\Wee Wilfred\Documents\AndroidProjects\Sunshine\app\build\intermediates\builds\debug\273214596327800\classes.dex"
+            type="RELOAD_DEX" />
+    </build>
+    <build
+        timestamp="273422392506489"
+        verifier="COMPATIBLE" >
+        <artifact
+            location="C:\Users\Wee Wilfred\Documents\AndroidProjects\Sunshine\app\build\intermediates\reload-dex\debug\classes.dex"
+            type="RELOAD_DEX" />
+    </build>
 
 </instant-run>
