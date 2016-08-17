@@ -5,4 +5,5 @@
     android:minHeight="?android:attr/listPreferredItemHeight"
     android:gravity="center_vertical"
     android:id="@+id/list_item_forecast_textview"
-    android:text="Day - Weather - MinTemp/MAx" />
+    android:text="Day - Weather - MinTemp/Max"
+    android:textColor="#ffffff"/>

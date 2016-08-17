@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="UnitsAlias">
+        <item>Metric</item>
+        <item>Kelvin</item>
+    </string-array>
+    <string-array name="TempValues">
+        <item>Metric</item>
+        <item>Kelvin</item>
+    </string-array>
+</resources>

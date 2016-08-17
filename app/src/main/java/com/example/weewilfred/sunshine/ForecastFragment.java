@@ -1,14 +1,33 @@
+/*
+ * Copyright (C) 2014 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+
 package com.example.weewilfred.sunshine;
 
 import android.annotation.TargetApi;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.icu.text.SimpleDateFormat;
 import android.icu.util.GregorianCalendar;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
-import android.text.format.Time;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -16,8 +35,11 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+
+
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -58,8 +80,8 @@ public class ForecastFragment extends Fragment {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         if (id == R.id.action_refresh){
-            FetchWeatherTask weatherTask = new FetchWeatherTask();
-            weatherTask.execute("7839581");
+            updateWeather();
+
             return true;
         }
         return super.onOptionsItemSelected(item);
@@ -70,7 +92,7 @@ public class ForecastFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        String[] data = {
+        /*String[] data = {
                 "Monday - Sunny - 14/24",
                 "Tuesday - Cloudy - 10/19",
                 "Wednesday - Solar Flares - -45/134",
@@ -78,9 +100,9 @@ public class ForecastFragment extends Fragment {
                 "Friday - Everyone gone - gone.. gone",
                 "Saturday - Glowing Green - 22/24",
                 "Sunday - Excellent weather for Zombies"
-        };
+        }; DUMMY DATA
 
-        List<String> weekForecast = new ArrayList<String>(Arrays.asList(data));
+        List<String> weekForecast = new ArrayList<String>(Arrays.asList(data));   DUMMY DATA*/
 
         // Get a reference to the ListView, and attach this adapter to it.
          mForecastAdapter =
@@ -92,7 +114,7 @@ public class ForecastFragment extends Fragment {
                         //ID of the textview to populate the layout
                         R.id.list_item_forecast_textview,
                         // Pass in Forecast Data To populate the text
-                        weekForecast);
+                        new ArrayList<String>());
 
         View rootView = inflater.inflate(R.layout.fragment_main, container);
 
@@ -100,8 +122,30 @@ public class ForecastFragment extends Fragment {
         ListView listView = (ListView) rootView.findViewById(
                 R.id.listview_forecast);
         listView.setAdapter(mForecastAdapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView,  View view, int position, long l ) {
+                String forecast = mForecastAdapter.getItem(position);
+                //Toast.makeText(getActivity(), forecast, Toast.LENGTH_SHORT).show();
+                Intent DetailIntent = new Intent(getActivity(), DetailActivity.class).putExtra(Intent.EXTRA_TEXT, forecast);
+                startActivity(DetailIntent);
+            }
+        });
+
 
         return rootView;
+    }
+    private void updateWeather(){
+        FetchWeatherTask weatherTask = new FetchWeatherTask();
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
+        String location = prefs.getString(getString(R.string.pref_location_key),getString(R.string.pref_location_default));
+        weatherTask.execute(location);
+    }
+
+    @Override               //Sets the app to update weather on startup. Note the super.onStart allows this method to use the parent (aka super)
+    public void onStart(){  //method called onStart();
+        super.onStart();
+        updateWeather();
     }
 
     public class FetchWeatherTask extends AsyncTask<String, Void, String[]> {
@@ -111,19 +155,24 @@ public class ForecastFragment extends Fragment {
         /* The date/time conversion code is going to be moved outside the asynctask later,
         * so for convenience we're breaking it out into its own method now.*/
 
-        @TargetApi(Build.VERSION_CODES.N)
-        private String getReadableDateString(long time){
-            // Because the API returns a unix timestamp (measured in seconds),
-            // it must be converted to milliseconds in order to be converted to valid date.
-            SimpleDateFormat shortenedDateFormat = new SimpleDateFormat("EEE MMM dd");
-            return shortenedDateFormat.format(time);
-        }
-
         /**
          * Prepare the weather high/lows for presentation.
          */
         private String formatHighLows(double high, double low) {
             // For presentation, assume the user doesn't care about tenths of a degree.
+            SharedPreferences sharedPrefs =
+                    PreferenceManager.getDefaultSharedPreferences(getActivity());
+            String unitType = sharedPrefs.getString(
+                    getString(R.string.pref_units_key),
+                    getString(R.string.pref_units_metric));
+
+            if (unitType.equals(getString(R.string.pref_units_Kelvin))){
+                high = high + 272;
+                low = low + 272;
+            } else if (!unitType.equals(getString(R.string.pref_units_metric))){
+                Log.d(LOG_TAG, "Unit Type not found: " + unitType);
+            }
+
             long roundedHigh = Math.round(high);
             long roundedLow = Math.round(low);
 

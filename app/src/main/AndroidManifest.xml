@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.weewilfred.sunshine">
-    <uses-permission android:name="android.permission.INTERNET" />      //Add permission for internet access
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    //Add permission for internet access
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -16,11 +17,32 @@
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
+                <!-- Int to add a map view for current postal code in settings -->
+                <action android:name="android.intent.action.VIEW" />
+                <data android:scheme="geo" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <!-- End of postal code intent -->
             </intent-filter>
         </activity>
-
+        <activity
+            android:name=".DetailActivity"
+            android:label="@string/app_name"
+            android:parentActivityName=".MainActivity"
+            android:immersive="true"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.weewilfred.sunshine.MainActivity" />
+        </activity>
+        <activity
+            android:name="com.example.weewilfred.sunshine.SettingsActivity"
+            android:label="@string/Settings"
+            android:parentActivityName="MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="MainActivity"/>
+        </activity>
     </application>
 
 </manifest>
